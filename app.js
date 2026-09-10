@@ -30,6 +30,7 @@ const ordersRoutes = require('./routes/orders');
 const checkoutRoutes = require('./routes/checkout');
 const homeBannerRoutes = require('./routes/homeBanner');
 const searchRoutes = require('./routes/search');
+const newsletterRoutes=require("./routes/newsletter");
 
 app.use("/uploads", express.static("uploads"));
 app.use('/api/category', categoryRoutes);
@@ -47,6 +48,7 @@ app.use('/api/homeBanner', homeBannerRoutes);
 app.use('/api/search', searchRoutes);
 
 app.use('/api/user', userRoutes);
+app.use("/api/newsletter",newsletterRoutes);
 
 //database
 mongoose.connect(process.env.CONNECTION_STRING)

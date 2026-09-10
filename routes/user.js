@@ -209,7 +209,20 @@ router.get('/:id', async(req, res)=>{
    }
    res.status(200).send(user);
 });
-
+router.get('/get/count', async (req, res) => {
+  try {
+    const userCount = await User.countDocuments();
+    return res.status(200).json({
+      userCount: userCount
+    });
+  } catch (error) {
+    console.log("USER COUNT ERROR:", error);
+    return res.status(500).json({
+      success: false,
+      message: error.message
+    });
+  }
+});
 router.delete('/:id', async(req, res)=>{
    User.findByIdAndDelete(req.params.id).then(user =>{
     if(user){
